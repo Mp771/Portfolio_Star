@@ -181,8 +181,19 @@ function initAnimations() {
 
 // EmailJS initialization
 (function() {
+    // Check if emailjs is loaded
+    if (typeof emailjs === 'undefined') {
+        console.error("EmailJS library not loaded! Make sure the CDN script is included.");
+        return;
+    }
+    
+    console.log("Initializing EmailJS...");
     emailjs.init({
         publicKey: "zrHLNRTGen9OrGaAO",
+    }).then(() => {
+        console.log("EmailJS initialized successfully");
+    }).catch((error) => {
+        console.error("EmailJS initialization failed:", error);
     });
 })();
 
@@ -190,28 +201,79 @@ function initAnimations() {
 function initContactForm() {
     const form = document.getElementById("contact-form");
     
+    console.log("Contact form found:", form); // Debug log
+    
     if (form) {
         form.addEventListener("submit", function(e) {
             e.preventDefault();
+            console.log("Form submitted"); // Debug log
+
+            // Validate form fields
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const subject = form.subject.value.trim();
+            const message = form.message.value.trim();
+
+            if (!name || !email || !subject || !message) {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert("Please enter a valid email address");
+                return;
+            }
 
             const currentTime = new Date().toLocaleString();
             const formData = {
-                name: form.name.value,
-                email: form.email.value,
-                subject: form.subject.value,
-                message: form.message.value,
-                time: currentTime // 👈 this fills {{time}} in your email template
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                time: currentTime
             };
 
+            console.log("Sending email with data:", formData); // Debug log
+
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitButton.disabled = true;
+
             emailjs.send("service_m6hntmw", "template_ig4b22h", formData)
-                .then(() => {
-                    alert("✅ Message sent successfully!");
-                    form.reset();
+                .then((response) => {
+                    console.log("Email sent successfully:", response); // Debug log
+                    
+                    // Show success state
+                    submitButton.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                    submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    
+                    // Reset form after a delay
+                    setTimeout(() => {
+                        form.reset();
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.style.background = '';
+                        submitButton.disabled = false;
+                    }, 2000);
+                    
                 }, (error) => {
-                    alert("❌ Failed to send message. Try again.");
-                    console.error("EmailJS error:", error);
+                    console.error("EmailJS error details:", error); // Debug log
+                    
+                    // Show error state
+                    submitButton.innerHTML = '<i class="fas fa-times"></i> Failed';
+                    submitButton.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                    
+                    // Reset button after a delay
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.style.background = '';
+                        submitButton.disabled = false;
+                    }, 3000);
                 });
         });
+    } else {
+        console.error("Contact form not found! Make sure the form has id='contact-form'");
     }
 }
 
