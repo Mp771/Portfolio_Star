@@ -96,6 +96,13 @@ body {
     font-weight: 900;
     font-size: 1.5rem;
     color: var(--accent-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--star-gold);
+    transform: scale(1.05);
 }
 
 .nav-logo i {
