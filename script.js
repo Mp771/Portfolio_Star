@@ -179,35 +179,37 @@ function initAnimations() {
     document.head.appendChild(style);
 }
 
-// Contact form functionality
+// EmailJS initialization
+(function() {
+    emailjs.init({
+        publicKey: "zrHLNRTGen9OrGaAO",
+    });
+})();
+
+// Contact form functionality with EmailJS
 function initContactForm() {
-    const form = document.querySelector('.contact-form');
+    const form = document.getElementById("contact-form");
     
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener("submit", function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(form);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-            
-            // Simulate form submission
-            showNotification('Message sent successfully!', 'success');
-            form.reset();
+
+            const currentTime = new Date().toLocaleString();
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                message: form.message.value,
+                time: currentTime // 👈 this fills {{time}} in your email template
+            };
+
+            emailjs.send("service_m6hntmw", "template_ig4b22h", formData)
+                .then(() => {
+                    alert("✅ Message sent successfully!");
+                    form.reset();
+                }, (error) => {
+                    alert("❌ Failed to send message. Try again.");
+                    console.error("EmailJS error:", error);
+                });
         });
     }
 }
