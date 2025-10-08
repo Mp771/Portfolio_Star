@@ -198,6 +198,7 @@ function initContactForm() {
             const formData = {
                 name: form.name.value,
                 email: form.email.value,
+                subject: form.subject.value,
                 message: form.message.value,
                 time: currentTime // 👈 this fills {{time}} in your email template
             };
