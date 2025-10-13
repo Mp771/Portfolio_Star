@@ -238,7 +238,7 @@ function initContactForm() {
             // Show loading state
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.innerHTML;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitButton.innerHTML = '<video autoplay muted loop style="width: 20px; height: 20px; margin-right: 8px;"><source src="loading page.mp4" type="video/mp4"></video>Sending...';
             submitButton.disabled = true;
 
             emailjs.send("service_m6hntmw", "template_ig4b22h", formData)
