@@ -52,8 +52,8 @@ body {
 
     background:
         linear-gradient(
-            rgba(10,15,30,.70),
-            rgba(10,15,30,.82)
+            rgba(10,15,30,.45),
+            rgba(10,15,30,.55)
         ),
         url("cosmic-bg.png");
 
@@ -127,8 +127,8 @@ body {
     top: 0;
     width: 100%;
     background: rgba(15, 23, 42, 0.88);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -245,9 +245,9 @@ body {
     left: -30px;
     right: -30px;
     bottom: -20px;
-    background: rgba(15, 23, 42, 0.3);
+      background: rgba(15,23,42,.18);
+    backdrop-filter: none;
     border-radius: 20px;
-    backdrop-filter: blur(5px);
     z-index: -1;
 }
 
@@ -490,9 +490,10 @@ body {
 }
 
 /* About Section */
-.about {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 58, 138, 0.15) 100%);
-    border-top: 1px solid rgba(255,255,255,0.04);
+.about,
+.tech-stack,
+.contact{
+    background: rgba(15,23,42,.08);
 }
 
 .about-content {
@@ -585,7 +586,6 @@ body {
     padding: 30px;
     border-radius: 15px;
     width: 45%;
-    backdrop-filter: blur(10px);
     border: 1px solid rgba(96, 165, 250, 0.2);
     transition: all 0.3s ease;
 }
@@ -623,15 +623,6 @@ body {
    Skills & Technologies
 ========================== */
 
-.tech-stack {
-    background: linear-gradient(
-        135deg,
-        rgba(15, 23, 42, 0.75) 0%,
-        rgba(30, 58, 138, 0.15) 100%
-    );
-    border-top: 1px solid rgba(255,255,255,.04);
-}
-
 .tech-categories{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -640,9 +631,7 @@ body {
 }
 
 .tech-category{
-    background:rgba(15,23,42,.55);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    background: rgba(8,15,35,.82);
     border:1px solid rgba(96,165,250,.18);
     border-radius:18px;
     padding:24px;
@@ -719,7 +708,6 @@ body {
 
 .project-card{
     background:rgba(15,23,42,.58);
-    backdrop-filter:blur(12px);
     border:1px solid rgba(96,165,250,.18);
     transition:.35s ease;
 }
@@ -901,10 +889,6 @@ body {
 }
 
 /* Contact Section */
-.contact {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 58, 138, 0.15) 100%);
-    border-top: 1px solid rgba(255,255,255,0.04);
-}
 
 .contact-content {
     display: grid;
@@ -972,11 +956,10 @@ body {
 
 /* Contact Form */
 .contact-form {
-    background: rgba(30, 58, 138, 0.1);
+      background: rgba(8,15,35,.82);
     padding: 40px;
     border-radius: 20px;
     border: 1px solid rgba(96, 165, 250, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 .form-group {
