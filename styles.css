@@ -212,12 +212,14 @@ body {
 }
 
 /* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    background: transparent;
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    padding-top:70px;   /* navbar height */
 }
 
 .hero-content {
@@ -387,8 +389,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(59, 130, 246, 0.9));
-    backdrop-filter: blur(10px);
+    background: rgba(8,15,35,.88);
     transition: opacity 0.3s ease;
 }
 
