@@ -25,12 +25,36 @@ body {
     color: var(--text-light);
     overflow-x: hidden;
     line-height: 1.6;
+    position: relative;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Cosmic Background */
+.cosmic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background: url('image-3.jpeg') center center / cover no-repeat;
+}
+
+.cosmic-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.82) 0%,
+        rgba(15, 23, 42, 0.88) 50%,
+        rgba(15, 23, 42, 0.92) 100%
+    );
 }
 
 /* Starfield Background */
@@ -44,18 +68,21 @@ body {
     height: 100%;
     display: block;
     z-index: -1;
+    pointer-events: none;
 }
 
 .stars {
-    background: #000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="100" cy="100" r="1" fill="white" opacity="0.8"/><circle cx="200" cy="300" r="1" fill="white" opacity="0.6"/><circle cx="300" cy="150" r="1" fill="white" opacity="0.9"/><circle cx="400" cy="400" r="1" fill="white" opacity="0.7"/><circle cx="500" cy="250" r="1" fill="white" opacity="0.8"/><circle cx="600" cy="350" r="1" fill="white" opacity="0.6"/><circle cx="700" cy="200" r="1" fill="white" opacity="0.9"/><circle cx="800" cy="450" r="1" fill="white" opacity="0.7"/><circle cx="900" cy="300" r="1" fill="white" opacity="0.8"/><circle cx="50" cy="500" r="1" fill="white" opacity="0.6"/><circle cx="150" cy="600" r="1" fill="white" opacity="0.9"/><circle cx="250" cy="700" r="1" fill="white" opacity="0.7"/><circle cx="350" cy="550" r="1" fill="white" opacity="0.8"/><circle cx="450" cy="650" r="1" fill="white" opacity="0.6"/><circle cx="550" cy="750" r="1" fill="white" opacity="0.9"/><circle cx="650" cy="600" r="1" fill="white" opacity="0.7"/><circle cx="750" cy="700" r="1" fill="white" opacity="0.8"/><circle cx="850" cy="550" r="1" fill="white" opacity="0.6"/><circle cx="950" cy="650" r="1" fill="white" opacity="0.9"/></svg>') repeat;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="100" cy="100" r="1" fill="white" opacity="0.5"/><circle cx="200" cy="300" r="1" fill="white" opacity="0.4"/><circle cx="300" cy="150" r="1" fill="white" opacity="0.6"/><circle cx="400" cy="400" r="1" fill="white" opacity="0.4"/><circle cx="500" cy="250" r="1" fill="white" opacity="0.5"/><circle cx="600" cy="350" r="1" fill="white" opacity="0.3"/><circle cx="700" cy="200" r="1" fill="white" opacity="0.6"/><circle cx="800" cy="450" r="1" fill="white" opacity="0.4"/><circle cx="900" cy="300" r="1" fill="white" opacity="0.5"/><circle cx="50" cy="500" r="1" fill="white" opacity="0.3"/><circle cx="150" cy="600" r="1" fill="white" opacity="0.6"/><circle cx="250" cy="700" r="1" fill="white" opacity="0.4"/><circle cx="350" cy="550" r="1" fill="white" opacity="0.5"/><circle cx="450" cy="650" r="1" fill="white" opacity="0.3"/><circle cx="550" cy="750" r="1" fill="white" opacity="0.6"/><circle cx="650" cy="600" r="1" fill="white" opacity="0.4"/><circle cx="750" cy="700" r="1" fill="white" opacity="0.5"/><circle cx="850" cy="550" r="1" fill="white" opacity="0.3"/><circle cx="950" cy="650" r="1" fill="white" opacity="0.6"/></svg>') repeat;
     background-size: 200px 200px;
     animation: move-stars 200s linear infinite;
+    opacity: 0.6;
 }
 
 .twinkling {
-    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="100" cy="100" r="1" fill="white" opacity="0.4"/><circle cx="200" cy="300" r="1" fill="white" opacity="0.2"/><circle cx="300" cy="150" r="1" fill="white" opacity="0.6"/><circle cx="400" cy="400" r="1" fill="white" opacity="0.3"/><circle cx="500" cy="250" r="1" fill="white" opacity="0.5"/><circle cx="600" cy="350" r="1" fill="white" opacity="0.2"/><circle cx="700" cy="200" r="1" fill="white" opacity="0.7"/><circle cx="800" cy="450" r="1" fill="white" opacity="0.4"/><circle cx="900" cy="300" r="1" fill="white" opacity="0.3"/></svg>') repeat;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="100" cy="100" r="1" fill="white" opacity="0.25"/><circle cx="200" cy="300" r="1" fill="white" opacity="0.15"/><circle cx="300" cy="150" r="1" fill="white" opacity="0.35"/><circle cx="400" cy="400" r="1" fill="white" opacity="0.2"/><circle cx="500" cy="250" r="1" fill="white" opacity="0.3"/><circle cx="600" cy="350" r="1" fill="white" opacity="0.15"/><circle cx="700" cy="200" r="1" fill="white" opacity="0.4"/><circle cx="800" cy="450" r="1" fill="white" opacity="0.25"/><circle cx="900" cy="300" r="1" fill="white" opacity="0.2"/></svg>') repeat;
     background-size: 300px 300px;
     animation: move-twinkle 100s linear infinite;
+    opacity: 0.5;
 }
 
 @keyframes move-stars {
@@ -163,7 +190,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    background: var(--gradient-space);
+    background: transparent;
 }
 
 .hero-content {
@@ -436,7 +463,7 @@ body {
 
 /* About Section */
 .about {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 58, 138, 0.15) 100%);
 }
 
 .about-content {
@@ -815,7 +842,7 @@ body {
 
 /* Contact Section */
 .contact {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 58, 138, 0.15) 100%);
 }
 
 .contact-content {
@@ -939,7 +966,8 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--space-dark);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
     padding: 30px 0;
     text-align: center;
     border-top: 1px solid rgba(96, 165, 250, 0.2);
