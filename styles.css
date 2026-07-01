@@ -45,25 +45,41 @@ body {
 }
 
 /* Cosmic Background */
-.cosmic-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
-    background: url('image-3.jpeg') center center / cover no-repeat;
+.cosmic-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+
+    background:
+        linear-gradient(
+            rgba(10,15,30,.70),
+            rgba(10,15,30,.82)
+        ),
+        url("cosmic-bg.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
-.cosmic-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(15, 23, 42, 0.82) 0%,
-        rgba(15, 23, 42, 0.88) 50%,
-        rgba(15, 23, 42, 0.92) 100%
+.cosmic-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(96,165,250,.08),
+    transparent 45%),
+
+    radial-gradient(circle at bottom right,
+    rgba(59,130,246,.06),
+    transparent 50%),
+
+    linear-gradient(
+        rgba(15,23,42,.55),
+        rgba(15,23,42,.82)
     );
 }
 
@@ -603,54 +619,55 @@ body {
     line-height: 1.6;
 }
 
-/* Tech Stack Section */
+/* Tech Stack Section *//* ==========================
+   Skills & Technologies
+========================== */
+
 .tech-stack {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 58, 138, 0.2) 100%);
-    border-top: 1px solid rgba(255,255,255,0.04);
+    background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.75) 0%,
+        rgba(30, 58, 138, 0.15) 100%
+    );
+    border-top: 1px solid rgba(255,255,255,.04);
 }
 
-.tech-categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 28px;
-    align-items: stretch;
+.tech-categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+    align-items:start;
 }
 
-.tech-category {
-    display: flex;
-    flex-direction: column;
-    background: rgba(15, 23, 42, 0.55);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(96,165,250,.18);
-    border-radius: 22px;
-    padding: 28px;
-    backdrop-filter: blur(12px);
-    transition: .35s ease;
-    min-height: 100%;
+.tech-category{
+    background:rgba(15,23,42,.55);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(96,165,250,.18);
+    border-radius:18px;
+    padding:24px;
+    transition:all .3s ease;
 }
 
 .tech-category:hover{
-    transform: translateY(-8px);
-    border-color: rgba(96,165,250,.45);
+    transform:translateY(-6px);
+    border-color:rgba(96,165,250,.45);
     box-shadow:
-        0 15px 35px rgba(59,130,246,.18),
-        0 0 25px rgba(96,165,250,.10);
+        0 12px 30px rgba(59,130,246,.15);
 }
 
 .tech-category h3{
     text-align:center;
-    margin-bottom:24px;
     color:#60a5fa;
-    font-size:1.35rem;
-    letter-spacing:.5px;
+    margin-bottom:20px;
+    font-family:'Orbitron', monospace;
+    font-size:1.2rem;
 }
 
 .tech-items{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-    gap:16px;
-    flex:1;
+    grid-template-columns:repeat(auto-fit,minmax(95px,1fr));
+    gap:14px;
 }
 
 .tech-item{
@@ -658,46 +675,39 @@ body {
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
-    padding:18px 12px;
-
-    min-height:105px;
-
-    border-radius:14px;
-
+    min-height:90px;
+    padding:14px 10px;
     background:rgba(255,255,255,.03);
-
     border:1px solid rgba(96,165,250,.12);
-
-    transition:all .3s ease;
+    border-radius:12px;
+    transition:all .25s ease;
 }
+
 .tech-item:hover{
-    transform:translateY(-6px);
-    background:rgba(59,130,246,.12);
+    transform:translateY(-4px);
+    background:rgba(59,130,246,.10);
     border-color:#60a5fa;
-    box-shadow:
-        0 12px 25px rgba(59,130,246,.15);
 }
 
 .tech-item i{
-    font-size:2rem;
-    margin-bottom:12px;
+    font-size:1.8rem;
     color:#60a5fa;
-    transition:.3s;
+    margin-bottom:10px;
+    transition:.25s;
 }
 
-.tech-item:hover i {
-    transform:scale(1.15);
+.tech-item:hover i{
+    transform:scale(1.12);
     color:#fbbf24;
 }
 
 .tech-item span{
-    font-size:.9rem;
+    font-size:.82rem;
     text-align:center;
+    line-height:1.35;
     font-weight:600;
-    line-height:1.4;
-}
 
+}
 
 /* Projects Section */
 .projects-grid {
