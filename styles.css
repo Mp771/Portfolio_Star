@@ -1180,3 +1180,93 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-blue);
 }
+
+/* ==========================
+   Portfolio Loader
+========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#050816;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    transition:opacity .7s ease, visibility .7s ease;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-video{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+    margin-bottom:25px;
+}
+
+.loader-title{
+    font-family:'Orbitron',monospace;
+    color:#60a5fa;
+    font-size:2rem;
+    margin-bottom:12px;
+}
+
+#loader-status{
+    color:#cbd5e1;
+    margin-bottom:28px;
+    min-height:22px;
+}
+
+.loader-progress{
+    width:300px;
+    height:7px;
+    border-radius:999px;
+    overflow:hidden;
+    background:#162036;
+}
+
+.loader-progress-fill{
+
+    width:0;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #60a5fa
+    );
+
+    animation:loaderFill 2.8s linear forwards;
+
+}
+
+@keyframes loaderFill{
+
+    from{
+        width:0;
+    }
+
+    to{
+        width:100%;
+    }
+
+}
+
+/* Hero reveal after loader */
+
+.hero{
+    opacity:0;
+    transform:translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+body.loaded .hero{
+    opacity:1;
+    transform:translateY(0);
+}

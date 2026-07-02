@@ -1,3 +1,56 @@
+window.addEventListener("load", () => {
+
+    const messages = [
+
+        "Initializing AI Security Systems...",
+
+        "Loading Threat Intelligence...",
+
+        "Scanning Malware Database...",
+
+        "Loading Skills & Projects...",
+
+        "Portfolio Ready"
+
+    ];
+
+    const status = document.getElementById("loader-status");
+
+    let i = 0;
+
+    const interval = setInterval(() => {
+
+        i++;
+
+        if(i < messages.length){
+
+            status.textContent = messages[i];
+
+        }
+
+    },550);
+
+    setTimeout(() => {
+
+        clearInterval(interval);
+
+        const loader = document.getElementById("loader");
+
+        document.body.classList.add("loaded");
+
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+
+        setTimeout(() => {
+
+            loader.remove();
+
+        },700);
+
+    },2800);
+
+});
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
